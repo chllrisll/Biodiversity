@@ -82,13 +82,13 @@ function buildCharts(sample) {
     console.log(yticks)
 
     // 8. Create the trace for the bar chart. 
-    var barData = [
+    var barData = [{
       x: sampleValues,
       y: yticks,
       text: otuLabels,
       type: "bar",
       orinetation: "h"
-    ];
+    }];
     // 9. Create the layout for the bar chart. 
     var barLayout = {
      x: sampleValues,
