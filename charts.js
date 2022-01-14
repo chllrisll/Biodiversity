@@ -58,18 +58,18 @@ function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
-    var samplesArr = data.sammples;
+    var samplesArr = data.samples;
     //console.log(samplesArr);
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    var filteredSample = samplesArr.filter(obj => obj.id === sample);
+    var filteredSample = samplesArr.filter(obj => obj.id == sample);
     console.log(filteredSample);
     //  5. Create a variable that holds the first sample in the array.
     var firstSample = filteredSample[0].sample_values[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuIds = filtered_Sample[0].otu_ids;
-    var otuLabels = filtered_Sample[0].otu_labels;
-    var sampleValues = filtered_Sample[0].sample_values;
+    var otuIds = filteredSample[0].otu_ids;
+    var otuLabels = filteredSample[0].otu_labels;
+    var sampleValues = filteredSample[0].sample_values;
     // console.log(otuIds)
     // console.log(otuLabels)
     // console.log(sampleValues)
@@ -79,7 +79,7 @@ function buildCharts(sample) {
     //  so the otu_ids with the most bacteria are last. 
 
     var yticks = sampleValues.sort((a,b) => a - b).reverse().slice(0,10);
-    console.log(yticks)
+    //console.log(yticks)
 
     // 8. Create the trace for the bar chart. 
     var barData = [{
@@ -89,13 +89,12 @@ function buildCharts(sample) {
       type: "bar",
       orientation: "h"
     }];
+    var data = [barData];
     // 9. Create the layout for the bar chart. 
-    // var barLayout = {
-    //   title: "Most Rapidly Growing Cities",
-    //   xaxis: {title: "City" },
-    //   yaxis: {title: "Population Growth, 2016-2017"}
-    // };
+    var barLayout = {
+      title: "Top Ten Bacteria Cultures Found",
+     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("bar-plot", data, layout);
+    Plotly.newPlot("bar-plot", data, barLayout);
   });
 }
