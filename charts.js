@@ -78,7 +78,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = sampleValues.sort((a,b) +> a - b).reverse().slice(0,10);
+    var yticks = sampleValues.sort((a,b) => a - b).reverse().slice(0,10);
     console.log(yticks)
 
     // 8. Create the trace for the bar chart. 
@@ -87,17 +87,15 @@ function buildCharts(sample) {
       y: yticks,
       text: otuLabels,
       type: "bar",
-      orinetation: "h"
+      orientation: "h"
     }];
     // 9. Create the layout for the bar chart. 
-    var barLayout = {
-     x: sampleValues,
-     y: yticks,
-     text: otuLabels,
-     type: "bar",
-     orinetation: "h"
-    };
+    // var barLayout = {
+    //   title: "Most Rapidly Growing Cities",
+    //   xaxis: {title: "City" },
+    //   yaxis: {title: "Population Growth, 2016-2017"}
+    // };
     // 10. Use Plotly to plot the data with the layout. 
-    
+    Plotly.newPlot("bar-plot", data, layout);
   });
 }
