@@ -6,32 +6,34 @@ function buildCharts(sample) {
     
 
     // Deliverable 1 Step 10. Use Plotly to plot the data with the layout. 
-    //Plotly.newPlot("bar-plot", barData, barLayout);
+    Plotly.newPlot("bar", barData, barLayout);
 
     // 1. Create the trace for the bubble chart.
     var bubbleData = [{
-      x: otuId.slice(0,10).reverse(),
-      y: sampleValues.slice(0,10).reverse(),
-      text: otuLabels.slice(0,10).reverse(),
+      x: otu_ids.map(id => id),
+      y: sample_values.map(value => value),
+      text: otu_labels,
       mode: 'markers',
       marker: {
-        color: otuId,
-        size: sampleValues
+        color: otu_ids,
+        size: sample_values,
+        colorscale: 'Rainbow'
+
       }
       
     }];
 
-    //var data = [bubbleData];
+    var data = [bubbleData];
 
     // 2. Create the layout for the bubble chart.
-    var bubbleLayout = [{
+    var bubbleLayout = {
       title: "The Amount of Bacteria in Belly Buttons",
       xaxis: {title: "OTU Ids" },
-      margin:{1: 100 },
-      showlegend: false,
+      //margin:{1: 100 },
+      //showlegend: false,
       height: 600,
       length: 600
-    }];
+    };
     
     // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot('bubble', bubbleData, bubbleLayout);

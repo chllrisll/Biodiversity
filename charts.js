@@ -96,5 +96,40 @@ function buildCharts(sample) {
      };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar-plot", barData, barLayout);
+
+
+    //Deliv 1 ^
+    //Deliv 2 
+
+
+    // 1. Create the trace for the bubble chart.
+    var bubbleData = [{
+      x: otuIds.map(ids => ids),
+      y: sampleValues.map(value => value),
+      text: otuLabels,
+      mode: 'markers',
+      marker: {
+        color: otuIds,
+        size: sampleValues,
+        colorscale: 'Rainbow'
+
+      }
+      
+    }];
+
+    //var data = [bubbleData];
+
+    // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+      title: "The Amount of Bacteria in Belly Buttons",
+      xaxis: {title: "OTU Ids" },
+      //margin:{1: 100 },
+      //showlegend: false,
+      height: 600,
+      length: 600
+    };
+    
+    // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout);
   });
 }
