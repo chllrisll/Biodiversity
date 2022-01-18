@@ -151,7 +151,7 @@ function buildCharts(sample) {
 
     // 2. Create a variable that holds the first sample in the metadata array.
     // Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var washTimes = parseFloat(metadata.washing_frequency);
+    var washTimes = parseFloat(metadata.w_freq);
 
 
     // 3. Create a variable that holds the washing frequency.
@@ -179,6 +179,6 @@ function buildCharts(sample) {
     var gaugeLayout = { width: 800, height: 300, margin: { t: 50, b: 10 } };
 
     // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot('myDiv', gaugeData, gaugeLayout);
+    Plotly.newPlot('gauge', gaugeData, gaugeLayout);
   });
 }
